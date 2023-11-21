@@ -7,11 +7,11 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { ClipLoader } from 'react-spinners';
 
-interface userIdProps {
+interface UserIdProps {
   
 }
 
-const userView: FC<userIdProps> = ({}) => {
+const UserView: FC<UserIdProps> = ({}) => {
  const router = useRouter();
   const {userId} = router.query;
 
@@ -36,4 +36,4 @@ const userView: FC<userIdProps> = ({}) => {
   )
 }
 
-export default userView
+export default UserView
