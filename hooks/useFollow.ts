@@ -15,7 +15,7 @@ const useFollow = (userId:string) => {
 
   const isFollowing = useMemo(()=>{
     const list = currentUser?.followingIds || []
-    console.log(list,"asfasfasf");
+    // console.log(list,"asfasfasf");
     return list.includes(userId)
   },[userId,currentUser])
   

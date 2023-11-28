@@ -17,7 +17,7 @@ const UserBio: FC<UserBioProps> = ({userId}) => {
 
   const {data: currentUser} = useCurrentUser();
   const {data: fetchedUser} = useUser(userId);
-  console.log("@@@@",currentUser);
+  // console.log("@@@@",currentUser);
   
   const editModal = useEditModal();
   const {isFollowing,toggleFollow} = useFollow(userId)
