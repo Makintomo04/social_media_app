@@ -19,7 +19,7 @@ const loginModal = useLoginModal()
       flex
       item-center
       justify-center
-      bg-sky-500
+      bg-emerald-500
       hover:bg-opacity-80
       transition
       cursor-pointer">
@@ -28,7 +28,7 @@ const loginModal = useLoginModal()
       <div className="mt-6 hidden xl:block rounded-full
       px-4
       py-4
-      bg-sky-500
+      bg-emerald-500
       hover:bg-opacity-90
       transition
       cursor-pointer">
