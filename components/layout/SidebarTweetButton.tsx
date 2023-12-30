@@ -1,4 +1,3 @@
-import useCurrentUser from '@/hooks/useCurrentUser'
 import useLoginModal from '@/hooks/useLoginModal'
 import { useRouter } from 'next/router'
 import React, { useCallback } from 'react'
@@ -7,15 +6,10 @@ const SidebarTweetButton = () => {
 
   const router = useRouter()
 const loginModal = useLoginModal()
-const { data: currentUser } = useCurrentUser();
 
   const handleClick = useCallback(()=>{
-    if (!currentUser) {
-      return loginModal.onOpen();
-    }
-
-    router.push('/');
-  }, [loginModal, router, currentUser]);
+    loginModal.onOpen()
+  },[loginModal])
 
   return (
     <div onClick={handleClick}>

@@ -22,9 +22,7 @@ export default async function handler (req:NextApiRequest, res:NextApiResponse){
   }
   if(req.method === "GET"){
     const {userId} = req.query
-if(userId === "undefined"){
-  throw new Error("WWWWWWWWWWWWWWWWWWWWWWWWWWWW")
-}
+
     let posts;
 
     if(userId && typeof userId === "string"){
