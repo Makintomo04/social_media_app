@@ -5,6 +5,7 @@ import Modal from '../Modal';
 import useRegisterModal from '@/hooks/useRegisterModal';
 import { useSession, signIn } from "next-auth/react"
 import {toast} from "react-hot-toast"
+import { useRouter } from 'next/navigation';
 // interface LoginModalProps {
   
 // }
@@ -18,6 +19,8 @@ const [email,setEmail] = useState("");
 const [password,setPassword] = useState("");
 const [isLoading,setIsLoading] = useState(false);
 const [disableLogin,setDisableLogin] = useState(false);
+
+const router = useRouter()
 
 useEffect(()=>{
 if(email.length===0 || password.length===0){
@@ -39,11 +42,23 @@ const onToggle = useCallback(() => {
 const onSubmit = useCallback(async () => {
   try {
     setIsLoading(true)
-    await signIn("credentials",{
-      email, password
+    signIn("credentials", {
+      redirect: false,
+      email,
+      password
     })
-    toast.success("success.")
-    loginModal.onClose()
+    .then((callback) => {
+      setIsLoading(false)
+      if(callback?.ok){
+        toast.success("Logged in successfully");
+        router.refresh();
+        loginModal.onClose()
+      }
+      else{
+        toast.error("Invalid credentials");
+      }
+    })
+    // toast.success("success.")
   } catch (error) {
     toast.error("Couldn't find account.")
     console.log(error);
